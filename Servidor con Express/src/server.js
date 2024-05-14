@@ -12,7 +12,6 @@ app.get("/products", async (req, res) => {
     const products = await productManager.getProduct();
 
     const { limit } = req.query
-    const productsLimit = products.slice(0,limit).map(p);
     if(limit) {
       products = products.slice(0,limit)
    }
