@@ -13,18 +13,9 @@ app.get("/products", async (req, res) => {
 
     const { limit } = req.query
     const productsLimit = products.slice(0,limit).map(p);
-
-    products.prototype.last = function(limit){
-        return this.slice(limit)
-      };
-      
-      console.log( arr.last )
-
-
-    
-    console.log(productsLimit);
-
-    // res.status(201).json(productsLimit)
+    if(limit) {
+      products = products.slice(0,limit)
+   }
     res.status(200).json(products);
   } catch (error) {
     res.status(500).json({ msg: error.message });
